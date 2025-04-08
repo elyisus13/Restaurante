@@ -15,20 +15,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class MesasGUI {
+public class MesasGUI
+{
     private JPanel main;
     private JTable table1;
     private JTextField textField1;
     private JTextField textField2;
-    private JTextField textField3;
     private JButton agregarButton;
     private JButton actualizarButton;
     private JButton eliminarButton;
+    private JComboBox comboBox1;
 
     MesasDAO mesasDAO = new MesasDAO();
 
     public MesasGUI()
     {
+        comboBox1.addItem("Disponible");
+        comboBox1.addItem("Ocupada");
         obtenerDatos();
         agregarButton.addActionListener(new ActionListener()
         {
@@ -37,9 +40,8 @@ public class MesasGUI {
             {
                 try {
                     // Convertir los valores de los campos a enteros
-                    int id = Integer.parseInt(textField1.getText().trim());
                     int capacidad = Integer.parseInt(textField2.getText().trim());
-                    String estatus_mesa = textField3.getText().trim();
+                    String estatus_mesa = (String) comboBox1.getSelectedItem();
 
 
                     // Validar que el estatus no esté vacío
@@ -49,7 +51,7 @@ public class MesasGUI {
                         return;
                     }
                     // Crear objeto Mesas y agregarlo
-                    Mesas mesas = new Mesas(id, capacidad, estatus_mesa);
+                    Mesas mesas = new Mesas(0, capacidad, estatus_mesa);
                     mesasDAO.agregar(mesas);
 
                     // Recargar los datos en la tabla
@@ -67,9 +69,9 @@ public class MesasGUI {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                int id_mesas = Integer.parseInt(textField1.getText().trim());
                 int capacidad = Integer.parseInt(textField2.getText().trim());
-                String estatus_mesa = textField3.getText().trim();
+                String estatus_mesa = (String) comboBox1.getSelectedItem();
+                int id_mesas = Integer.parseInt(textField1.getText().trim());
 
 
                 Mesas mesas = new Mesas(id_mesas,capacidad, estatus_mesa);
@@ -100,7 +102,7 @@ public class MesasGUI {
                 {
                     textField1.setText((String) table1.getValueAt(selectFile, 0));
                     textField2.setText((String) table1.getValueAt(selectFile, 1));
-                    textField3.setText((String) table1.getValueAt(selectFile, 2));
+                    comboBox1.setSelectedItem(table1.getValueAt(selectFile, 3).toString());
 
                 }
             }
@@ -149,4 +151,3 @@ public class MesasGUI {
         frame.setSize(800,600);
         frame.setResizable(false);
     }
-}
