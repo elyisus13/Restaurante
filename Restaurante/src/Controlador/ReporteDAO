@@ -1,0 +1,61 @@
+package Controlador;
+import java.sql.*;
+import java.util.*;
+
+public class ReporteDAO {
+    private Connection conn;
+
+    public ReporteDAO(Connection conn) {
+        this.conn = conn;
+    }
+
+    public double totalVentas(String desde, String hasta) {
+        String sql = "SELECT SUM(total) FROM ventas WHERE fecha BETWEEN ? AND ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, desde);
+            stmt.setString(2, hasta);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) return rs.getDouble(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0.0;
+    }
+
+    public List<String> productosMasVendidos() {
+        String sql = "SELECT p.nombre, SUM(dv.cantidad) AS total " +
+                "FROM detalle_venta dv JOIN productos p ON dv.producto_id = p.id " +
+                "GROUP BY p.nombre ORDER BY total DESC LIMIT 5";
+        List<String> lista = new ArrayList<>();
+        try (PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                String nombre = rs.getString("nombre");
+                int cantidad = rs.getInt("total");
+                lista.add(nombre + " - " + cantidad + " unidades");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lista;
+    }
+
+    public List<String> clientesConMasCompras() {
+        String sql = "SELECT c.nombre, COUNT(v.id) AS compras " +
+                "FROM ventas v JOIN clientes c ON v.cliente_id = c.id " +
+                "GROUP BY c.nombre ORDER BY compras DESC LIMIT 5";
+        List<String> lista = new ArrayList<>();
+        try (PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                String nombre = rs.getString("nombre");
+                int compras = rs.getInt("compras");
+                lista.add(nombre + " - " + compras + " compras");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lista;
+    }
+}
+
