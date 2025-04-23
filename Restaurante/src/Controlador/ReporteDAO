@@ -10,6 +10,11 @@ public class ReporteDAO {
     }
 
     public double totalVentas(String desde, String hasta) {
+    // Ejemplo SQL: SELECT SUM(total) FROM ventas WHERE fecha BETWEEN ? AND ?
+    }
+
+
+    public double totalVentas(String desde, String hasta) {
         String sql = "SELECT SUM(total) FROM ventas WHERE fecha BETWEEN ? AND ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, desde);
