@@ -26,8 +26,9 @@ public class MenuPrincipalGUI {
         });
         gestionDeEmpleadosButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-
+            public void actionPerformed(ActionEvent e) 
+            {
+                Vista.EmpleadosGUI.main(null);
             }
         });
         gestiosDeMesasButton.addActionListener(new ActionListener() {
@@ -46,32 +47,25 @@ public class MenuPrincipalGUI {
         });
         gestionDeOrdenesButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) 
+            {
 
             }
         });
         generacionDeResportesButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-
+            public void actionPerformed(ActionEvent e) 
+            {
+                Vista.ResportesGUI.main(null);
             }
         });
-        gestionDeVentasButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
+        
         chatButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        abrirChatButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
+            public void actionPerformed(ActionEvent e) 
+            {
+                Vista.ChatGUI.main(null);
+                Vista.ChatCliente.main(null);
             }
         });
     }
