@@ -10,10 +10,10 @@ public class ReporteDAO {
     private Connection conn;
 
     public ReporteDAO() {
-        conn = ConexionDB.getConnection(); 
+        conn = ConexionDB.getConnection();
     }
 
-    
+
     public double totalVentas(String desde, String hasta) {
         double total = 0.0;
         String query = "SELECT SUM(total) FROM ventas WHERE fecha BETWEEN ? AND ?";
@@ -47,7 +47,7 @@ public class ReporteDAO {
         return productos;
     }
 
-    
+
     public List<String[]> clientesConMasCompras() {
         List<String[]> clientes = new ArrayList<>();
         String query = "SELECT c.nombre, COUNT(*) FROM ventas v JOIN clientes c ON v.id_cliente = c.id GROUP BY c.id ORDER BY COUNT(*) DESC LIMIT 10";
@@ -63,4 +63,3 @@ public class ReporteDAO {
         return clientes;
     }
 }
-
