@@ -29,7 +29,8 @@ public class ResportesGUI
     ReporteDAO reporteDAO = new ReporteDAO();
     ConexionDB conexionDB = new ConexionDB();
 
-    public ResportesGUI() {
+    public ResportesGUI()
+    {
         ventasDiariasButton.addActionListener(new ActionListener()
         {
             @Override
@@ -62,7 +63,9 @@ public class ResportesGUI
             @Override
             public void actionPerformed(ActionEvent e)
             {
+
                 String producto = reporteDAO.productoMasVendido();
+                System.out.println("Texto insertado: " + "Producto más vendido: " + producto);
                 textField1.setText("Producto más vendido: " + producto);
             }
         });
