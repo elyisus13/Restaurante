@@ -1,26 +1,28 @@
 package Modelo;
 
-import Controlador.ReporteDAO;
-import java.util.List;
-
 public class Reporte
 {
+    private String descripcion;
+    private double valor;
 
-    private ReporteDAO dao;
-
-    public Reporte() {
-        dao = new ReporteDAO();
+    public Reporte(String descripcion, double valor) {
+        this.descripcion = descripcion;
+        this.valor = valor;
     }
 
-    public double obtenerTotalVentas(String desde, String hasta) {
-        return dao.totalVentas(desde, hasta);
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public List<String[]> obtenerProductosMasVendidos() {
-        return dao.productosMasVendidos();
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public List<String[]> obtenerClientesConMasCompras() {
-        return dao.clientesConMasCompras();
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 }
