@@ -1,78 +1,79 @@
 package Modelo;
 
-public class    Orden
+public class Ordenes
 {
-    int idOrden;
-    String fecha_orden;
-    String estado_del_orden;
-    double total_orden;
-    int idClientes;
-    int idMesas;
-    int idEmpleados;
+    int id_orden;
+    int idclientes;
+    int id_empleado;
+    int id_mesa;
+    Double total;
+    String fecha;
+    String estado;
 
 
-    public Orden (int idOrden, String fecha_orden, String estado_del_orden, double total_orden, int idClientes, int idMesas, int idEmpleados) {
-        this.idOrden = idOrden;
-        this.fecha_orden = fecha_orden;
-        this.estado_del_orden = estado_del_orden;
-        this.total_orden = total_orden;
-        this.idClientes = idClientes;
-        this.idMesas = idMesas;
-        this.idEmpleados = idEmpleados;
+    public Ordenes(int id_orden, int idclientes, int id_empleado, int id_mesa, Double total, String fecha, String estado) {
+        this.id_orden = id_orden;
+        this.idclientes = idclientes;
+        this.id_empleado = id_empleado;
+        this.id_mesa = id_mesa;
+        this.total = total;
+        this.fecha = fecha;
+        this.estado = estado;
     }
 
-    public int getIdOrden() {
-        return idOrden;
+    public int getId_orden() {
+        return id_orden;
     }
 
-    public void setIdOrden(int IdOrden) {
-        this.idOrden = idOrden;
+    public void setId_orden(int id_orden) {
+        this.id_orden = id_orden;
     }
 
-    public String getFecha_orden() {
-        return fecha_orden;
+    public int getIdclientes() {
+        return idclientes;
     }
 
-    public void setFecha_orden(String fecha_orden) {
-        this.fecha_orden = fecha_orden;
+    public void setIdclientes(int idclientes) {
+        this.idclientes = idclientes;
     }
 
-    public String getEstado_del_orden() {
-        return estado_del_orden;
+    public int getId_empleado() {
+        return id_empleado;
     }
 
-    public void setEstado_del_orden(String estado_del_orden) {
-        this.estado_del_orden = estado_del_orden;
+    public void setId_empleado(int id_empleado) {
+        this.id_empleado = id_empleado;
     }
 
-    public double getTotal_orden() {
-        return total_orden;
+    public int getId_mesa() {
+        return id_mesa;
     }
 
-    public void setTotal_orden(double total_orden) {
-        this.total_orden = total_orden;
+    public void setId_mesa(int id_mesa) {
+        this.id_mesa = id_mesa;
     }
 
-    public int getIdClientes() {
-        return idClientes;
+    public Double getTotal() {
+        return total;
     }
 
-    public void setIdClientes(int idClientes) {
-        this.idClientes = idClientes;
-    }
-    public int getIdMesas() {
-        return idMesas;
+    public void setTotal(Double total) {
+        this.total = total;
     }
 
-    public void setIdMesas(int idMesas) {
-        this.idMesas = idMesas;
-    }
-    public int getIdEmpleados() {
-        return idEmpleados;
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setIdEmpleados(int idEmpleados) {
-        this.idEmpleados = idEmpleados;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }
-
